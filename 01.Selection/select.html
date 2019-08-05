@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Selector Sample</title>
+		<script src="https://d3js.org/d3.v5.min.js"></script>
+	</head>
+	<body>
+		<div class="myFirstElement">
+			<h1>Hello This is D3</h1>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum,
+				eaque dicta temporibus odio velit facilis deserunt qui. Iusto,
+				fuga ut. Eius tenetur eum obcaecati ut quidem, velit voluptate
+				vero inventore?
+			</p>
+			<hr />
+			<p id="par">
+				Hello This is domain-driven-document. And Let's start first
+				lecture.
+			</p>
+		</div>
+	</body>
+	<script>
+		var h1elem = d3.select("h1");
+		h1elem.style("background", "#eee");
+
+		d3.select("p").style("color", "CornflowerBlue ");
+		d3.select("#par").style("color", "DarkRed");
+	</script>
+</html>
