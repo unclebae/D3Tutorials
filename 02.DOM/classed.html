@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Attribute</title>
+		<script src="https://d3js.org/d3.v5.min.js"></script>
+		<style>
+			.my-selector {
+				background: #55aa22;
+				font-size: 400;
+			}
+			.my-selector2 {
+				background: #22aabb;
+				font-size: 800;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<div id="content">
+				<p>Paragraph 01</p>
+				<p>Paragraph 02</p>
+				<p>Paragraph 03</p>
+			</div>
+			<div id="content2">
+				<p class="my-selector2">Toggle 01</p>
+				<p>Toggle 02</p>
+			</div>
+		</div>
+	</body>
+	<script>
+		// 클래스를 추가한다.
+		d3.selectAll("#content p").classed("my-selector", true);
+
+		// 클래스를 제거한다.
+		d3.selectAll("#content p").classed("my-selector", false);
+
+		// 클래스 속성을 토글링한다.
+		var content2 = d3.selectAll("#content2 p");
+		content2.classed("my-selector2", function(d, i) {
+			return !content2.classed("my-selector2");
+		});
+	</script>
+</html>

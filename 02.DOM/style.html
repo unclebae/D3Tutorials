@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Attribute</title>
+		<script src="https://d3js.org/d3.v5.min.js"></script>
+	</head>
+	<body>
+		<svg width="200" height="200">
+			<circle cx="100" cy="100" r="80"></circle>
+			<circle id="second" cx="100" cy="100" r="50"></circle>
+		</svg>
+	</body>
+	<script>
+		d3.select("circle").style("fill", "#22aa99");
+
+		const color = {
+			yellow: "yellow"
+		};
+
+		d3.select("#second").style("fill", color.yellow);
+	</script>
+</html>
