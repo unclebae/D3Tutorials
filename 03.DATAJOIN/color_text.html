@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Data Join</title>
+		<script src="https://d3js.org/d3.v5.min.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			<p></p>
+			<p></p>
+			<p></p>
+			<p></p>
+			<p></p>
+		</div>
+	</body>
+	<script>
+		var textData = [
+			{ text: "Let's Start", color: "black" },
+			{ text: "First Color", color: "rgba(51,203,90,1)" },
+			{ text: "Second Color", color: "rgba(16,179,191,1)" },
+			{ text: "Third Color", color: "rgba(17,54,157,1)" },
+			{ text: "Fourth Color", color: "rgba(141,17,157,1)" },
+			{ text: "End.", color: "black" }
+		];
+
+		d3.select(".container")
+			.selectAll("p")
+			.data(textData)
+			.text(function(d) {
+				return d.text;
+			})
+			.style("color", function(d) {
+				return d.color;
+			});
+	</script>
+</html>
