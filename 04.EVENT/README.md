@@ -155,3 +155,12 @@ d3.event 라고 하면, 현재 발생한 이벤트 정보를 획득합니다.
 그리고 택스트를 엘리먼트에 마우스 위치를 출력합니다.
 
 ![mousemove](./mousemove.png "mouseMove")
+
+# 결론
+
+지금까지 d3 이벤트에 대해서 간단히 알아 보았습니다. 
+d3는 DOM 에서 지원하는 이벤트를 모두 지원하며 해당 정보는 아래 경로에서 찾을 수 있습니다.
+
+[DOM Event](https://developer.mozilla.org/en-US/docs/Web/Events#Standard_events)
+
+[dom.eventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener)
