@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Basic Enter</title>
+		<script src="https://d3js.org/d3.v5.min.js"></script>
+		<style>
+			#container p {
+				background: #eee;
+				border: dashed 1px green;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="container">
+			<p></p>
+			<p></p>
+			<p></p>
+		</div>
+	</body>
+	<script>
+		var datas = [1, 2, 3, 4, 5];
+
+		var joinedData = d3
+			.select("#container")
+			.selectAll("p")
+			.data(datas);
+
+		joinedData
+			.enter()
+			.append("p")
+			.merge(joinedData)
+			.text(function(d, i) {
+				console.log("data: ", d, ":", i);
+				return d;
+			});
+	</script>
+</html>
