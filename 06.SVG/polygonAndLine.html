@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Polygon and Polyline</title>
+	</head>
+	<body>
+		<div>
+			<h1>Polygon</h1>
+			<svg width="500" height="210">
+				<polygon
+					points="10, 10 100, 200 200, 180 200, 50"
+					style="fill:blue;stroke:red;stroke-width:1"
+				></polygon>
+			</svg>
+		</div>
+		<div>
+			<h1>Polygon Star</h1>
+			<svg width="500" height="210">
+				<polygon
+					points="100,10 40,198 190,78 10,78 160,198"
+					style="fill:blue;stroke:red;stroke-width:5;fill-rule:nonzero;"
+				/>
+			</svg>
+			<h4>
+				This Sample from
+				https://www.w3schools.com/graphics/svg_polygon.asp
+			</h4>
+		</div>
+		<div>
+			<h1>Polygon Star EvenOdd</h1>
+			<svg width="500" height="210">
+				<polygon
+					points="100,10 40,198 190,78 10,78 160,198"
+					style="fill:blue;stroke:red;stroke-width:5;fill-rule:evenodd;"
+				/>
+			</svg>
+			<h4>
+				This Sample from
+				https://www.w3schools.com/graphics/svg_polygon.asp
+			</h4>
+		</div>
+		<div>
+			<h1>Polyline non fill</h1>
+			<svg width="500" height="210">
+				<polyline
+					points="10,10 30,100 100,70 120,200 180,40"
+					style="fill:none;stroke:blue;stroke-width:5;"
+				/>
+			</svg>
+		</div>
+		<div>
+			<h1>Polyline fill</h1>
+			<svg width="500" height="210">
+				<polyline
+					points="10,10 30,100 100,70 120,200 180,40"
+					style="fill:brown;stroke:blue;stroke-width:5;"
+				/>
+			</svg>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Line</title>
+	</head>
+	<body>
+		<div>
+			<h1>Normal Text</h1>
+			<svg width="400" height="100">
+				<text x="10" y="50" fill="blue">Hello</text>
+			</svg>
+		</div>
+		<div>
+			<h1>Text tspan</h1>
+			<svg width="400" height="100">
+				<text x="10" y="50" fill="blue">
+					Hello
+					<tspan font-weight="bold" fill="red">
+						T-hub
+					</tspan>
+				</text>
+			</svg>
+		</div>
+		<div>
+			<h1>Text Path</h1>
+			<svg width="400" height="400">
+				<path
+					id="textline"
+					d="M 20 200 q 150 -300 300 0"
+					fill="transparent"
+				/>
+				<text>
+					<textpath
+						xmlns:xlink="http://www.w3.org/1999/xlink"
+						xlink:href="#textline"
+					>
+						Hello T-hub. Celebrate your reborn!!!. See you~~
+					</textpath>
+				</text>
+			</svg>
+		</div>
+	</body>
+</html>
