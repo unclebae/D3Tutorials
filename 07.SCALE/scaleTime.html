@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Scale Linear</title>
+		<script src="https://d3js.org/d3.v5.min.js"></script>
+	</head>
+	<body></body>
+	<script>
+		var data = [
+			{ time: "2019-01-01", score: 50 },
+			{ time: "2019-02-01", score: 45 },
+			{ time: "2019-03-01", score: 60 },
+			{ time: "2019-04-01", score: 70 },
+			{ time: "2019-05-01", score: 72 },
+			{ time: "2019-06-01", score: 90 },
+			{ time: "2019-07-01", score: 84 },
+			{ time: "2019-08-01", score: 99 }
+		];
+
+		var width = 500,
+			height = 500,
+			margin = 20,
+			barWidth = 50;
+
+		var timeScale = d3
+			.scaleTime()
+			.domain([
+				d3.min(data, d => new Date(d.time)),
+				d3.max(data, d => new Date(d.time))
+			])
+			.range([0, width]);
+
+		var yScale = d3
+			.scaleLinear()
+			.domain([d3.max(data, d => d.score), 0])
+			.range([0, height]);
+
+		var svg = d3
+			.select("body")
+			.append("svg")
+			.attr("width", width)
+			.attr("height", height);
+
+		var g = svg.append("g");
+
+		g.selectAll("rect")
+			.data(data)
+			.enter()
+			.append("rect")
+			.attr("x", function(d, i) {
+				return timeScale(new Date(d.time));
+			})
+			.attr("y", function(d, i) {
+				return yScale(d.score);
+			})
+			.attr("width", function(d, i) {
+				return barWidth - 2;
+			})
+			.attr("height", function(d, i) {
+				return height - yScale(d.score);
+			})
+			.style("fill", "rgba(173,213,155,1)");
+	</script>
+</html>
