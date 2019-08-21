@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>xAxis</title>
+		<script src="https://d3js.org/d3.v5.min.js"></script>
+	</head>
+	<body></body>
+	<script>
+		var width = 500,
+			height = 500,
+			margin = 50,
+			yMargin = 10;
+		var xData = [0, 100];
+		var yData = [10, 15, 20, 25, 30, 35, 40, 45, 50];
+
+		var svg = d3
+			.select("body")
+			.append("svg")
+			.attr("width", width)
+			.attr("height", height);
+
+		var xScale = d3
+			.scaleLinear()
+			.domain(xData)
+			.range([0, width - margin - 10]);
+
+		var yScale = d3
+			.scaleLinear()
+			.domain([d3.min(yData), d3.max(yData)])
+			.range([0, height - margin]);
+
+		var xAxis = d3.axisBottom().scale(xScale);
+		var yAxis = d3.axisLeft().scale(yScale);
+		svg.append("g")
+			.attr("transform", "translate(50, " + yMargin + ")")
+			.call(yAxis);
+
+		svg.append("g")
+			.attr(
+				"transform",
+				"translate(50, " + (height - (margin - yMargin)) + ")"
+			)
+			.call(xAxis);
+	</script>
+</html>
