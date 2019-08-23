@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>BarChart</title>
+		<script src="https://d3js.org/d3.v5.min.js"></script>
+	</head>
+	<body></body>
+
+	<script>
+		var datas = [
+			{ date: "1월", sales: 1000 },
+			{ date: "2월", sales: 800 },
+			{ date: "3월", sales: 950 },
+			{ date: "4월", sales: 1100 },
+			{ date: "5월", sales: 1050 },
+			{ date: "6월", sales: 1500 },
+			{ date: "7월", sales: 1700 },
+			{ date: "8월", sales: 1900 },
+			{ date: "9월", sales: 2500 },
+			{ date: "10월", sales: 2400 },
+			{ date: "11월", sales: 2650 },
+			{ date: "12월", sales: 1950 }
+		];
+
+		var title = "월별 판매지수";
+		var titleGap = 50;
+		var margin = (margin = { top: 20, right: 20, bottom: 70, left: 40 });
+		var width = 500 - margin.left - margin.right,
+			height = 400 - margin.top - margin.bottom - titleGap;
+
+		const peopleArray = Object.keys(datas).map(i => datas[i].date);
+		var xScale = d3
+			.scaleBand()
+			.domain(peopleArray)
+			.range([0, width]);
+		var yScale = d3
+			.scaleLinear()
+			.domain([d3.max(datas, d => d.sales), 0])
+			.range([0, height]);
+
+		var svg = d3
+			.select("body")
+			.append("svg")
+			.attr("width", width + margin.left + margin.right)
+			.attr("height", height + margin.top + margin.bottom + titleGap)
+			.append("g")
+			.attr(
+				"transform",
+				"translate(" + margin.left + "," + (margin.top + titleGap) + ")"
+			);
+
+		var xAxis = d3.axisBottom().scale(xScale);
+
+		svg.append("g")
+			.attr("transform", "translate(0," + height + ")")
+			.call(xAxis)
+
+		var yAxis = d3.axisLeft().scale(yScale);
+		svg.append("g")
+			.call(yAxis)
+
+		svg.selectAll("bar")
+			.data(datas)
+			.enter()
+			.append("rect")
+			.style("fill", "steelblue")
+			.attr("x", function(d) {
+				return xScale(d.date) + 20 / 2;
+			})
+			.attr("width", 20)
+			.attr("y", function(d) {
+				return yScale(d.sales);
+			})
+			.attr("height", function(d) {
+				return height - yScale(d.sales);
+			});
+
+		d3.select("body svg")
+			.append("g")
+			.attr("transform", `translate(${width / 2} , 50)`)
+			.append("text")
+			.attr("font-size", 24)
+			.attr("font-weight", "bold")
+			.attr("text-anchor", "middle")
+			.text(title);
+	</script>
+</html>
