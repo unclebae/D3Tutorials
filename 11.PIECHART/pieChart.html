@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>PIE Chart</title>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+  </head>
+  <body></body>
+  <script>
+    var datas = [
+      { date: "1월", sales: 1000 },
+      { date: "2월", sales: 800 },
+      { date: "3월", sales: 950 },
+      { date: "4월", sales: 1100 },
+      { date: "5월", sales: 1050 },
+      { date: "6월", sales: 1500 },
+      { date: "7월", sales: 1700 },
+      { date: "8월", sales: 1900 },
+      { date: "9월", sales: 2500 },
+      { date: "10월", sales: 2400 },
+      { date: "11월", sales: 2650 },
+      { date: "12월", sales: 1950 }
+    ];
+
+    var title = "월별 판매비율 파이차트";
+    var titleGap = 50;
+    var margin = (margin = { top: 20, right: 20, bottom: 70, left: 40 });
+    var width = 500 - margin.left - margin.right,
+      height = 400 - margin.top - margin.bottom - titleGap;
+
+    const peopleArray = Object.keys(datas).map(i => datas[i].date);
+
+    var svg = d3
+      .select("body")
+      .append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom + titleGap)
+      .append("g")
+      .attr(
+        "transform",
+        "translate(" +
+          width / 2 +
+          "," +
+          (height / 2 + titleGap + margin.top) +
+          ")"
+      );
+    var chartColor = d3
+      .scaleOrdinal()
+      .domain(peopleArray)
+      .range([
+        "#9e0142",
+        "#d53e4f",
+        "#f46d43",
+        "#fdae61",
+        "#fee08b",
+        "#ffffbf",
+        "#e6f598",
+        "#abdda4",
+        "#66c2a5",
+        "#3288bd",
+        "#5e4fa2"
+      ]);
+
+    var radius = Math.min(width, height) / 2 - 1;
+    var arc = d3
+      .arc()
+      .innerRadius(0)
+    //   .innerRadius(radius/5)
+      .outerRadius(radius)
+      .cornerRadius(5);
+
+    var arcLabel = d3
+      .arc()
+      .innerRadius(radius / 2)
+      .outerRadius(radius);
+    var pie = d3
+      .pie()
+    //   .sort(null)
+      .value(d => d.sales)
+      .padAngle(0.02);
+
+    var arcs = pie(datas);
+
+    svg
+      .selectAll("path")
+      .data(arcs)
+      .enter()
+      .append("path")
+      .attr("stroke", "white")
+      .attr("fill", d => chartColor(d.data.date))
+      .attr("d", arc);
+
+    svg
+      .append("g")
+      .attr("font-family", "sans-serif")
+      .attr("font-size", 12)
+      .attr("text-anchor", "middle")
+      .selectAll("text")
+      .data(arcs)
+      .join("text")
+      .attr("transform", d => `translate(${arcLabel.centroid(d)})`)
+      .call(text =>
+        text
+          .append("tspan")
+          .attr("y", "-0.4em")
+          .attr("font-weight", "bold")
+          .text(d => d.data.date)
+      )
+      .call(text =>
+        text
+          .append("tspan")
+          .attr("x", 0)
+          .attr("y", "0.7em")
+          .text(d => d.data.sales)
+      );
+
+    d3.select("body svg")
+      .append("g")
+      .attr("transform", `translate(${width / 2} , 50)`)
+      .append("text")
+      .attr("font-size", 24)
+      .attr("font-weight", "bold")
+      .attr("text-anchor", "middle")
+      .text(title);
+  </script>
+</html>
