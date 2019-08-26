@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>SVG Transformation</title>
+		<script src="https://d3js.org/d3.v5.min.js"></script>
+	</head>
+	<body></body>
+	<script>
+		var svg = d3
+			.select("body")
+			.append("svg")
+			.attr("width", 400)
+			.attr("height", 400)
+			.style("background", "#eeeeee");
+
+		var group = svg.append("g");
+
+		group
+			.append("rect")
+			.attr("x", 10)
+			.attr("y", 10)
+			.attr("width", 50)
+			.attr("height", 50)
+			.attr("fill", "red");
+
+		group
+			.append("circle")
+			.attr("cx", 100)
+			.attr("cy", 100)
+			.attr("r", 50)
+			.attr("fill", "blue");
+	</script>
+</html>
