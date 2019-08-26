@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>D3 SVG Group</title>
+		<script src="https://d3js.org/d3.v5.min.js"></script>
+	</head>
+	<body></body>
+	<script>
+		var svg = d3
+			.select("body")
+			.append("svg")
+			.attr("width", 400)
+			.attr("height", 400)
+			.style("background", "#eeeeee");
+
+		var firstGroup = svg
+			.append("g")
+			.attr("transform", `translate(100, 100)`);
+
+		firstGroup
+			.append("circle")
+			.attr("cx", 50)
+			.attr("cy", 50)
+			.attr("r", 20)
+			.style("fill", "green");
+
+		firstGroup
+			.append("circle")
+			.attr("cx", 200)
+			.attr("cy", 200)
+			.attr("r", 20)
+			.style("fill", "pink");
+
+		var secondGroup = svg
+			.append("g")
+			.attr("transform", `translate(-50, -50)`);
+
+		secondGroup
+			.append("rect")
+			.attr("x", 100)
+			.attr("y", 100)
+			.attr("width", 50)
+			.attr("height", 50)
+			.style("fill", "blue");
+
+		secondGroup
+			.append("rect")
+			.attr("x", 250)
+			.attr("y", 250)
+			.attr("width", 50)
+			.attr("height", 50)
+			.style("fill", "red");
+	</script>
+</html>
