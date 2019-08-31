@@ -267,7 +267,7 @@ easy 에 대한 매우 자세한 샘플은 [easy](https://bl.ocks.org/d3noob/1ea
 
 ### easyBounce
 
-![easyBounce](./easyBounce.gif)
+![easeBounce](./easeBounce.gif)
 
 ### easeLinear
 
@@ -287,7 +287,7 @@ easy 에 대한 매우 자세한 샘플은 [easy](https://bl.ocks.org/d3noob/1ea
 
 ### easyPoly
 
-![easyPoly](./easyPoly.gif)
+![easePoly](./easePoly.gif)
 
 ### easeCircle
 
