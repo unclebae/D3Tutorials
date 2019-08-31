@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Transition</title>
+    <script src="https://d3js.org/d3.v5.js"></script>
+  </head>
+  <body></body>
+  <script>
+    var width = 500;
+    var height = 500;
+
+    var svg = d3
+      .select("body")
+      .append("svg")
+      .attr("width", width)
+      .attr("height", height)
+      .style("background", "#eeeeee");
+
+    var circle = svg
+      .append("circle")
+      .attr("cx", 50)
+      .attr("cy", 50)
+      .attr("r", 10)
+      .attr("fill", "red");
+
+    circle
+      .transition()
+      .duration(2000)
+      .attr("cx", 420)
+      .attr("cy", 420)
+      .transition()
+      .delay(1000)
+      .duration(2000)
+      .attr("r", 50);
+  </script>
+</html>
